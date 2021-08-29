@@ -33,6 +33,9 @@ function updateSelectedCount() {
     
     count.innerText = selectedSeats.length
     total.innerText = `$${(selectedSeats.length * ticketPrice).toFixed(2)}`
+
+    const selectedMovie = movieSelect.selectedIndex
+    localStorage.setItem('selectedMovie', selectedMovie)
 }
 
 
@@ -55,6 +58,7 @@ movieSelect.addEventListener('change', (e) => {
 
 
 
-
-
 populateUI()
+
+
+

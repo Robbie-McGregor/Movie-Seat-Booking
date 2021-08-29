@@ -6,15 +6,17 @@ const movieSelect = document.getElementById('movie')
 
 let ticketPrice = +movieSelect.value;
 
-function init() {
-    if (localStorage.getItem('selectedSeats') !== null){
-        const selectedSeats = eval(localStorage.getItem('selectedSeats'))
+function populateUI() {
+    const selectedSeats = JSON.parse(localStorage.getItem('selectedSeats'))
+    const selectedMovie = localStorage.getItem('selectedMovie')
+
+    if (selectedSeats !== null && selectedSeats.length != 0){
         selectedSeats.forEach(seat => {
             seats[seat].classList.add('selected')
         });
     } 
 
-    if (localStorage.getItem('selectedMovie') !== null){
+    if (selectedMovie !== null){
         movieSelect.selectedIndex = localStorage.getItem('selectedMovie')
     }
     updateSelectedCount()
@@ -55,4 +57,4 @@ movieSelect.addEventListener('change', (e) => {
 
 
 
-init()
+populateUI()
